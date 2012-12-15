@@ -1,0 +1,85 @@
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `managelibrary`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `books`
+--
+
+CREATE TABLE IF NOT EXISTS `books` (
+  `Book_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(200) NOT NULL,
+  `Author` varchar(200) NOT NULL,
+  `Publisher` varchar(200) NOT NULL,
+  `Published_Date` varchar(50) NOT NULL,
+  `ISBN` varchar(50) NOT NULL,
+  `Status` varchar(5) DEFAULT NULL,
+  `otherDetails` text NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Book_Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `books`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `borrowdetails`
+--
+
+CREATE TABLE IF NOT EXISTS `borrowdetails` (
+  `borrowID` int(11) NOT NULL AUTO_INCREMENT,
+  `bookId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `checkinTime` varchar(100) NOT NULL,
+  `checkoutTime` varchar(100) NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`borrowID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `borrowdetails`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `age` int(3) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `dob` varchar(50) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `phone` varchar(30) NOT NULL,
+  `userType` varchar(10) NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `pass`, `firstName`, `lastName`, `age`, `sex`, `email`, `dob`, `address`, `phone`, `userType`, `modified`) VALUES
+(1, 'Admin', '12345', 'Administrator', 'Data', 32, 'M', 'admin@library.com', '28-12-1980', 'Mysore', '8147804338', '1', '2012-12-09 10:57:29'),
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
